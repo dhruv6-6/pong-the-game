@@ -3,7 +3,7 @@ to run the file you need pygame and python installed
 to install python complete the installation of latest python version from here:
 https://www.python.org/downloads/
 
-to setup python enviroment with vs code refer to this link
+to setup python enviroment with vs code refer to this link:
 https://code.visualstudio.com/docs/languages/python
 
 to install pygame refer to this page:
