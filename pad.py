@@ -32,7 +32,7 @@ class Pad:
 
     def _sp_update_pad(self):
 
-        if self.state.sp_1_game_start == True or self.state.sp_1_game_start == True or self.state.sp_1_game_start == True:
+        if self.state.sp_1_game_start == True or self.state.sp_2_game_start == True or self.state.sp_3_game_start == True:
             if self.state.sp_ball_moving_right == True:
                 if (self.info.ai_pad_y_pos + self.info.ai_pad_height/2 >= self.info.sp_ball_y_pos) and (self.info.ai_pad_y_pos > 15):
                     self.info.ai_pad_y_pos -= self.info.ai_pad_speed
