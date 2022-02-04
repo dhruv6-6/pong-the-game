@@ -20,7 +20,7 @@ class Information:
         self.ball_speed_y = 2.5
         self.ball_speed_inc = 25
         self.max_ball_speed = 800
-        self.temp_ball_image = pygame.image.load('images/ball.png')
+        self.temp_ball_image = pygame.image.load('pong-the-game/images/ball.png')
         self.ball_image = pygame.transform.smoothscale( self.temp_ball_image , [ self.ball_size , self.ball_size])
         
         self.initial_ball_x_pos = (self.screen_width/2) - (self.ball_size/2)
@@ -30,9 +30,9 @@ class Information:
         
         #middle bar
         self.mid_divider_width = 8
-        self.temp_bar_image = pygame.image.load('images/middle_line.png')
+        self.temp_bar_image = pygame.image.load('pong-the-game/images/middle_line.png')
         self.middle_bar = pygame.transform.smoothscale( self.temp_bar_image , [self.mid_divider_width , 1080])
-        self.temp2_bar_image = pygame.image.load('images/mid_bar.png')
+        self.temp2_bar_image = pygame.image.load('pong-the-game/images/mid_bar.png')
         self.mid_filled_bar = pygame.transform.smoothscale( self.temp2_bar_image , [self.mid_divider_width , 1080])
 
         #pad
@@ -50,15 +50,15 @@ class Information:
         self.rightpad_x_pos = self.initial_rightpad_x_pos
         self.rightpad_y_pos = self.initial_rightpad_y_pos
 
-        self.temp_pad_image = pygame.image.load('images/pad.png')
+        self.temp_pad_image = pygame.image.load('pong-the-game/images/pad.png')
         self.pad_image = pygame.transform.smoothscale( self.temp_pad_image , [ self.pad_width , self.pad_height ])
         
         #font style
-        self.font_60 = pygame.font.Font("font/font.otf", 60)
-        self.font_140 = pygame.font.Font("font/font.otf", 140)
-        self.font_50 =  pygame.font.Font("font/font.otf", 50)
-        self.font_100 =  pygame.font.Font("font/font.otf", 100)
-        self.font_40 =  pygame.font.Font("font/font.otf", 40)
+        self.font_60 = pygame.font.Font("pong-the-game/font/font.otf", 60)
+        self.font_140 = pygame.font.Font("pong-the-game/font/font.otf", 140)
+        self.font_50 =  pygame.font.Font("pong-the-game/font/font.otf", 50)
+        self.font_100 =  pygame.font.Font("pong-the-game/font/font.otf", 100)
+        self.font_40 =  pygame.font.Font("pong-the-game/font/font.otf", 40)
 
         #home screen
         self.multiplayer_image = self.font_50.render("Multiplayer" , True , self.text_color , self.bg_color)
@@ -113,7 +113,7 @@ class Information:
         self.ai_pad_x_pos = self.ai_initial_pad_x_pos
         self.ai_pad_y_pos = self.ai_initial_pad_y_pos
 
-        self.temp_ai_pad_image = pygame.image.load('images/pad.png')
+        self.temp_ai_pad_image = pygame.image.load('pong-the-game/images/pad.png')
         self.ai_pad_image = pygame.transform.smoothscale( self.temp_ai_pad_image , [ self.ai_pad_width , self.ai_pad_height ])
 
         #sp game
@@ -126,7 +126,7 @@ class Information:
         self.sp_pad_x_pos = self.sp_initial_pad_x_pos
         self.sp_pad_y_pos = self.sp_initial_pad_y_pos
 
-        self.temp_sp_pad_image = pygame.image.load('images/pad.png')
+        self.temp_sp_pad_image = pygame.image.load('pong-the-game/images/pad.png')
         self.sp_pad_image = pygame.transform.smoothscale( self.temp_sp_pad_image , [ self.sp_pad_width , self.sp_pad_height ])
 
         #ball
@@ -136,7 +136,7 @@ class Information:
         self.sp_ball_speed_y = 2.5
         self.sp_ball_speed_inc = 25
         self.sp_max_ball_speed = 800
-        self.sp_temp_ball_image = pygame.image.load('images/ball.png')
+        self.sp_temp_ball_image = pygame.image.load('pong-the-game/images/ball.png')
         self.sp_ball_image = pygame.transform.smoothscale( self.sp_temp_ball_image , [ self.ball_size , self.ball_size])
         
         self.sp_initial_ball_x_pos = (self.screen_width/2) - (self.sp_ball_size/2)
@@ -159,9 +159,9 @@ class Information:
 
         #sp select screen
         self.level_select_circle = 100
-        self.temp_clear_ball_image = pygame.image.load('images/clear_ball.png')
+        self.temp_clear_ball_image = pygame.image.load('pong-the-game/images/clear_ball.png')
         self.clear_ball_image = pygame.transform.smoothscale( self.temp_clear_ball_image , [ self.level_select_circle , self.level_select_circle])
-        self.temp_filled_ball_image = pygame.image.load('images/ball.png')
+        self.temp_filled_ball_image = pygame.image.load('pong-the-game/images/ball.png')
         self.filled_ball_image = pygame.transform.smoothscale( self.temp_filled_ball_image , [ self.level_select_circle , self.level_select_circle])
         
         self.bg_color_select = (50,50,50)
@@ -185,11 +185,11 @@ class Information:
         self.win_screen_delay = 500
 
         #sounds
-        self.hit = pygame.mixer.Sound('sound_effect/hit.wav')
+        self.hit = pygame.mixer.Sound('pong-the-game/sound_effect/hit.wav')
         self.hit.set_volume(0.35) 
-        self.change = pygame.mixer.Sound('sound_effect/screen_change.wav')
+        self.change = pygame.mixer.Sound('pong-the-game/sound_effect/screen_change.wav')
         self.change.set_volume(0.35) 
-        self.select = pygame.mixer.Sound('sound_effect/select.wav')
+        self.select = pygame.mixer.Sound('pong-the-game/sound_effect/select.wav')
         self.select.set_volume(0.35) 
 
         #setting
@@ -229,14 +229,14 @@ class Information:
         self.music_volume_image_y = 5*self.screen_height/6 - self.music_volume_image_rect[3]/2  
                         
         self.boxes_size = 50
-        self.temp_box_image = pygame.image.load('images/box.png')
-        self.temp_filled_box_image = pygame.image.load('images/filled_box.png')
+        self.temp_box_image = pygame.image.load('pong-the-game/images/box.png')
+        self.temp_filled_box_image = pygame.image.load('pong-the-game/images/filled_box.png')
         self.box_image = pygame.transform.smoothscale( self.temp_box_image , [self.boxes_size , self.boxes_size])
         self.filled_box_image = pygame.transform.smoothscale( self.temp_filled_box_image , [self.boxes_size , self.boxes_size])
 
         self.bar_width = 1000
         self.bar_height = 50
-        self.temp_bar_image = pygame.image.load('images/bar.png')
+        self.temp_bar_image = pygame.image.load('pong-the-game/images/bar.png')
         self.bar_image = pygame.transform.smoothscale( self.temp_bar_image , [ self.bar_width , self.bar_height])
         self.bar_image_rect = self.bar_image.get_rect()
         self.bar_x = 2*self.screen_width/3 - self.bar_image_rect[2]/2
@@ -303,7 +303,7 @@ class Information:
 
         self.pad_image = pygame.transform.smoothscale( self.temp_pad_image , [ self.pad_width , self.pad_height ])
 
-        self.temp_slider_image = pygame.image.load('images/slider.png')
+        self.temp_slider_image = pygame.image.load('pong-the-game/images/slider.png')
         self.slider_speed_image = pygame.transform.smoothscale( self.temp_slider_image , [ self.slider_width_speed , self.bar_height])
         self.slider_size_image = pygame.transform.smoothscale( self.temp_slider_image , [ self.slider_width_size , self.bar_height])
         self.slider_win_image = pygame.transform.smoothscale( self.temp_slider_image , [ self.slider_width_win , self.bar_height])
