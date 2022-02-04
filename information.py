@@ -144,7 +144,8 @@ class Information:
         self.sp_ball_x_pos = self.sp_initial_ball_x_pos
         self.sp_ball_y_pos = self.sp_initial_ball_y_pos
 
-        self.ball_delay = 0
+        self.ball1_delay = 0
+        self.ball2_delay = 0
 
         self.sp_initial_ball1_x_pos = 80
         self.sp_initial_ball1_y_pos = (self.screen_height/2) - (self.sp_ball_size/2)
@@ -324,13 +325,27 @@ class Information:
 
     def _sp_update_yspeed(self):
         
-        if self.sp_ball_speed_x < 220:
-            self.sp_ball_speed_y = (random.randint(self.sp_ball_speed_x - 75 , self.sp_ball_speed_x + 75))/100
-        elif 220 < self.sp_ball_speed_x > 280:
-            self.sp_ball_speed_y = (random.randint(self.sp_ball_speed_x - 150 , self.sp_ball_speed_x + 150))/100
-        elif self.sp_ball_speed_x > 280:
-            self.sp_ball_speed_y = (random.randint(self.sp_ball_speed_x - 225 , self.sp_ball_speed_x + 225))/100
-        
+        if self.state.sp_4_game_start == True:
+            if self.sp_ball_speed_x < 220:
+                self.sp_ball1_speed_y = (random.randint(self.sp_ball_speed_x - 75 , self.sp_ball_speed_x + 75))/100
+            elif 220 < self.sp_ball_speed_x > 280:
+                self.sp_ball1_speed_y = (random.randint(self.sp_ball_speed_x - 150 , self.sp_ball_speed_x + 150))/100
+            elif self.sp_ball_speed_x > 280:
+                self.sp_ball1_speed_y = (random.randint(self.sp_ball_speed_x - 225 , self.sp_ball_speed_x + 225))/100
+            if self.sp_ball_speed_x < 220:
+                self.sp_ball2_speed_y = (random.randint(self.sp_ball_speed_x - 75 , self.sp_ball_speed_x + 75))/100
+            elif 220 < self.sp_ball_speed_x > 280:
+                self.sp_ball2_speed_y = (random.randint(self.sp_ball_speed_x - 150 , self.sp_ball_speed_x + 150))/100
+            elif self.sp_ball_speed_x > 280:
+                self.sp_ball2_speed_y = (random.randint(self.sp_ball_speed_x - 225 , self.sp_ball_speed_x + 225))/100
+        else:
+            if self.sp_ball_speed_x < 220:
+                self.sp_ball_speed_y = (random.randint(self.sp_ball_speed_x - 75 , self.sp_ball_speed_x + 75))/100
+            elif 220 < self.sp_ball_speed_x > 280:
+                self.sp_ball_speed_y = (random.randint(self.sp_ball_speed_x - 150 , self.sp_ball_speed_x + 150))/100
+            elif self.sp_ball_speed_x > 280:
+                self.sp_ball_speed_y = (random.randint(self.sp_ball_speed_x - 225 , self.sp_ball_speed_x + 225))/100
+
     def _sp_update_pad(self):
 
         if self.state.sp_1_game_start == True:

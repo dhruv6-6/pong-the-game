@@ -8,7 +8,6 @@ from input_events import Input_Events
 from state import State
 from ball import Ball
 from screens import Screens
-from ai_pad import Ai_Pad
 from pad import Pad
 
 class Pong:
@@ -20,7 +19,6 @@ class Pong:
         self.disp = pygame.display.set_mode((self.info.screen_width,self.info.screen_height))
         self.bg_song = Song(self)
         self.screens = Screens(self)
-        self.ai_pad = Ai_Pad(self)
         self.pad = Pad(self)
         self.ball = Ball(self)
         self.input_e = Input_Events(self)

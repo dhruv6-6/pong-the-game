@@ -69,6 +69,7 @@ class Ball:
             self.info.ball_y_pos += self.info.ball_speed_y
     
     def _sp_ball(self):
+
         if self.state.sp_1_game_start == True or self.state.sp_2_game_start == True or self.state.sp_3_game_start == True:
             self.disp.blit(self.info.sp_ball_image , [self.info.sp_ball_x_pos , self.info.sp_ball_y_pos])
 
@@ -117,7 +118,7 @@ class Ball:
         elif self.state.sp_4_game_start == True:
             self.disp.blit(self.info.sp_ball_image , [self.info.sp_ball1_x_pos , self.info.sp_ball1_y_pos])
             self.disp.blit(self.info.sp_ball_image , [self.info.sp_ball2_x_pos , self.info.sp_ball2_y_pos])
-            if self.info.ball_delay == 0:
+            if self.info.ball1_delay == 0:
 
                 if self.info.sp_ball1_y_pos <= 0:
                     self.state.sp_ball1_moving_up = False
@@ -143,7 +144,7 @@ class Ball:
                         self.info.sp_ball_speed_x = self.info.sp_ball_speed_x_initial
                         self.info.sp_ball1_x_pos = self.info.sp_initial_ball1_x_pos
                         self.info.sp_ball1_y_pos = self.info.sp_initial_ball1_y_pos
-                        self.info.ball_delay = 600
+                        self.info.ball1_delay = 600
                         self.state.sp_ball1_moving_right = True
 
                 if self.state.sp_ball1_moving_up == True:
@@ -152,4 +153,41 @@ class Ball:
                     self.info.sp_ball1_y_pos += self.info.sp_ball_speed_y
 
             else:
-                self.info.ball_delay -= 1
+                self.info.ball1_delay -= 1
+
+            if self.info.ball2_delay == 0:
+
+                if self.info.sp_ball2_y_pos <= 0:
+                    self.state.sp_ball2_moving_up = False
+                elif self.info.sp_ball2_y_pos + self.info.sp_ball_size >= self.info.screen_height:
+                    self.state.sp_ball2_moving_up = True
+
+                if self.state.sp_ball2_moving_right == True:
+                    self.info.sp_ball2_x_pos += self.info.sp_ball_speed_x/100
+
+                    if self.info.sp_ball2_x_pos > self.info.screen_width:
+                        self.info.sp_ball_speed_x = self.info.sp_ball_speed_x_initial
+                        self.info.sp_ball2_x_pos = self.info.sp_initial_ball2_x_pos
+                        self.info.sp_ball2_y_pos = self.info.sp_initial_ball2_y_pos
+                        self.info.ball2_delay = 600
+                        self.state.sp_ball2_moving_right = False  
+
+                    if self.info.ai_pad_x_pos + self.info.ai_pad_width -4 <= self.info.sp_ball2_x_pos + self.info.sp_ball_size <= self.info.ai_pad_x_pos + self.info.ai_pad_width + 4 and self.info.ai_pad_y_pos - 20 <= self.info.sp_ball2_y_pos <= self.info.ai_pad_y_pos + self.info.ai_pad_height + 20:
+                        self.info.hit.play()
+                        self.state.sp_ball2_moving_right = False
+                        self.info._sp_update_yspeed()
+                        self.info.sp_ball_speed_x += self.info.sp_ball_speed_inc
+
+                elif self.state.sp_ball2_moving_right == False:
+                    self.info.sp_ball2_x_pos -= self.info.sp_ball_speed_x/100
+
+                    if self.info.sp_ball2_x_pos < self.info.screen_width/2:
+                        self.state.sp_ball2_moving_right = True
+
+                if self.state.sp_ball2_moving_up == True:
+                    self.info.sp_ball2_y_pos -= self.info.sp_ball_speed_y
+                elif self.state.sp_ball2_moving_up == False:
+                    self.info.sp_ball2_y_pos += self.info.sp_ball_speed_y
+
+            else:
+                self.info.ball2_delay -= 1
