@@ -1,3 +1,4 @@
+import imp
 import sys
 import pygame
 import random
@@ -9,6 +10,7 @@ from state import State
 from ball import Ball
 from screens import Screens
 from pad import Pad
+from bricks import Bricks
 
 class Pong:
     def __init__(self):
@@ -20,6 +22,7 @@ class Pong:
         self.bg_song = Song(self)
         self.screens = Screens(self)
         self.pad = Pad(self)
+        self.brick = Bricks(self)
         self.ball = Ball(self)
         self.input_e = Input_Events(self)
         
@@ -46,6 +49,8 @@ class Pong:
         self.screens._update_screen()
         self.ball._update_ball()
         self.pad._update_pad()
+        if self.state.sp_4_game_start == True and self.state.sp_game_active == True:
+            self.brick._update_brick()
 
         pygame.display.flip()
         

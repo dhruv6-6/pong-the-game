@@ -147,11 +147,17 @@ class Information:
         self.ball1_delay = 0
         self.ball2_delay = 0
 
+        self.sp_ball1_speed_x_initial = 250
+        self.sp_ball1_speed_x = 250
+        self.sp_ball1_speed_y = 2.5
         self.sp_initial_ball1_x_pos = 80
         self.sp_initial_ball1_y_pos = (self.screen_height/2) - (self.sp_ball_size/2)
         self.sp_ball1_x_pos = self.sp_initial_ball1_x_pos
         self.sp_ball1_y_pos = self.sp_initial_ball1_y_pos
 
+        self.sp_ball2_speed_x_initial = 250
+        self.sp_ball2_speed_x = 250
+        self.sp_ball2_speed_y = 2.5
         self.sp_initial_ball2_x_pos = self.screen_width - self.ball_size - 80 
         self.sp_initial_ball2_y_pos = (self.screen_height/2) - (self.sp_ball_size/2)
         self.sp_ball2_x_pos = self.sp_initial_ball2_x_pos
@@ -249,6 +255,20 @@ class Information:
         
         self.slider_x = 2*self.screen_width/3 - self.bar_image_rect[2]/2
 
+        #bricks
+        self.brick_h = 100
+        self.brick_w = 10
+        self.bricks1_x_initial = [ 780 ,780 ,780 ,780 ,780 ,840 ,840 ,840 ,840 ,840 ,900 ,900 ,900 ,900 ,900 ]
+        self.bricks2_x_initial = [ 1020 ,1020 ,1020 ,1020 ,1020 ,1080 ,1080 ,1080 ,1080 ,1080 ,1140 ,1140 ,1140 ,1140 ,1140 ]
+        self.bricks1_y_initial = [ 180 - (self.brick_h/2) ,360  - (self.brick_h/2) ,540  - (self.brick_h/2) ,720  - (self.brick_h/2) ,900 - (self.brick_h/2)  ,180 - (self.brick_h/2) ,360  - (self.brick_h/2) ,540  - (self.brick_h/2) ,720  - (self.brick_h/2) ,900 - (self.brick_h/2) , 180 - (self.brick_h/2) ,360  - (self.brick_h/2) ,540  - (self.brick_h/2) ,720  - (self.brick_h/2) ,900 - (self.brick_h/2) ]
+        self.bricks2_y_initial = [ 180 - (self.brick_h/2) ,360  - (self.brick_h/2) ,540  - (self.brick_h/2) ,720  - (self.brick_h/2) ,900 - (self.brick_h/2)  ,180 - (self.brick_h/2) ,360  - (self.brick_h/2) ,540  - (self.brick_h/2) ,720  - (self.brick_h/2) ,900 - (self.brick_h/2) , 180 - (self.brick_h/2) ,360  - (self.brick_h/2) ,540  - (self.brick_h/2) ,720  - (self.brick_h/2) ,900 - (self.brick_h/2) ]
+        self.bricks1_x = self.bricks1_x_initial
+        self.bricks2_x = self.bricks2_x_initial
+        self.bricks1_y = self.bricks1_y_initial
+        self.bricks2_y = self.bricks2_y_initial
+        self.temp_brick_image = pygame.image.load('pong-the-game/images/bricks.png')
+        self.brick_image = pygame.transform.smoothscale( self.temp_brick_image , [ self.brick_w , self.brick_h ] )
+
     def _update_points(self):
 
         self.player_1_points = self.font_50.render( str(self.player_1_point) , True , self.text_color , self.bg_color )
@@ -320,31 +340,43 @@ class Information:
             self.ball_speed_y = (random.randint(self.ball_speed_x - 75 , self.ball_speed_x + 75))/100
         elif 220 < self.ball_speed_x > 280:
             self.ball_speed_y = (random.randint(self.ball_speed_x - 150 , self.ball_speed_x + 150))/100
-        elif self.ball_speed_x > 280:
+        elif 280 < self.ball_speed_x < 500:
             self.ball_speed_y = (random.randint(self.ball_speed_x - 225 , self.ball_speed_x + 225))/100
+        elif 500 < self.ball_speed_x:
+            self.ball_speed_y = (random.randint(self.ball_speed_x - 300 , self.ball_speed_x + 300))/100
+
+    def _sp_update1_yspeed(self):
+        
+        if self.sp_ball1_speed_x < 220:
+            self.sp_ball1_speed_y = (random.randint(self.sp_ball_speed_x - 75 , self.sp_ball_speed_x + 75))/100
+        elif 220 < self.sp_ball1_speed_x > 280:
+            self.sp_ball1_speed_y = (random.randint(self.sp_ball_speed_x - 150 , self.sp_ball_speed_x + 150))/100
+        elif 280 < self.sp_ball1_speed_x < 500:
+            self.sp_ball1_speed_y = (random.randint(self.sp_ball_speed_x - 225 , self.sp_ball_speed_x + 225))/100
+        elif 500 < self.sp_ball1_speed_x:
+            self.sp_ball1_speed_y = (random.randint(self.sp_ball_speed_x - 300 , self.sp_ball_speed_x + 300))/100
+        
+    def _sp_update2_yspeed(self):
+
+        if self.sp_ball2_speed_x < 220:
+            self.sp_ball2_speed_y = (random.randint(self.sp_ball_speed_x - 75 , self.sp_ball_speed_x + 75))/100
+        elif 220 < self.sp_ball2_speed_x > 280:
+            self.sp_ball2_speed_y = (random.randint(self.sp_ball_speed_x - 150 , self.sp_ball_speed_x + 150))/100
+        elif 280 < self.sp_ball2_speed_x < 500:
+            self.sp_ball2_speed_y = (random.randint(self.sp_ball_speed_x - 225 , self.sp_ball_speed_x + 225))/100
+        elif 500 < self.sp_ball2_speed_x:
+            self.sp_ball2_speed_y = (random.randint(self.sp_ball_speed_x - 300 , self.sp_ball_speed_x + 300))/100
 
     def _sp_update_yspeed(self):
-        
-        if self.state.sp_4_game_start == True:
-            if self.sp_ball_speed_x < 220:
-                self.sp_ball1_speed_y = (random.randint(self.sp_ball_speed_x - 75 , self.sp_ball_speed_x + 75))/100
-            elif 220 < self.sp_ball_speed_x > 280:
-                self.sp_ball1_speed_y = (random.randint(self.sp_ball_speed_x - 150 , self.sp_ball_speed_x + 150))/100
-            elif self.sp_ball_speed_x > 280:
-                self.sp_ball1_speed_y = (random.randint(self.sp_ball_speed_x - 225 , self.sp_ball_speed_x + 225))/100
-            if self.sp_ball_speed_x < 220:
-                self.sp_ball2_speed_y = (random.randint(self.sp_ball_speed_x - 75 , self.sp_ball_speed_x + 75))/100
-            elif 220 < self.sp_ball_speed_x > 280:
-                self.sp_ball2_speed_y = (random.randint(self.sp_ball_speed_x - 150 , self.sp_ball_speed_x + 150))/100
-            elif self.sp_ball_speed_x > 280:
-                self.sp_ball2_speed_y = (random.randint(self.sp_ball_speed_x - 225 , self.sp_ball_speed_x + 225))/100
-        else:
-            if self.sp_ball_speed_x < 220:
-                self.sp_ball_speed_y = (random.randint(self.sp_ball_speed_x - 75 , self.sp_ball_speed_x + 75))/100
-            elif 220 < self.sp_ball_speed_x > 280:
-                self.sp_ball_speed_y = (random.randint(self.sp_ball_speed_x - 150 , self.sp_ball_speed_x + 150))/100
-            elif self.sp_ball_speed_x > 280:
-                self.sp_ball_speed_y = (random.randint(self.sp_ball_speed_x - 225 , self.sp_ball_speed_x + 225))/100
+
+        if self.sp_ball_speed_x < 220:
+            self.sp_ball_speed_y = (random.randint(self.sp_ball_speed_x - 75 , self.sp_ball_speed_x + 75))/100
+        elif 220 < self.sp_ball_speed_x > 280:
+            self.sp_ball_speed_y = (random.randint(self.sp_ball_speed_x - 150 , self.sp_ball_speed_x + 150))/100
+        elif 280 < self.sp_ball_speed_x < 500:
+            self.sp_ball_speed_y = (random.randint(self.sp_ball_speed_x - 225 , self.sp_ball_speed_x + 225))/100
+        elif 500 < self.sp_ball_speed_x:
+            self.sp_ball_speed_y = (random.randint(self.sp_ball_speed_x - 300 , self.sp_ball_speed_x + 300))/100
 
     def _sp_update_pad(self):
 

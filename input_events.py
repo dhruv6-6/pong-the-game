@@ -99,6 +99,7 @@ class Input_Events:
                 if event.key == pygame.K_ESCAPE:
                     self.state.home_screen = True
                     self.state.sp_select_screen = False
+    
                     self.info.change.play()
 
                 if event.key == pygame.K_SPACE:
@@ -120,6 +121,18 @@ class Input_Events:
                 if event.key == pygame.K_ESCAPE:
                     self.state.sp_select_screen = True
                     self.state.sp_game_active = False
+                    self.info.sp_ball1_speed_x = self.info.sp_ball1_speed_x_initial
+                    self.info.sp_ball1_x_pos = self.info.sp_initial_ball1_x_pos
+                    self.info.sp_ball1_y_pos = self.info.sp_initial_ball1_y_pos
+                    self.info.sp_ball2_speed_x = self.info.sp_ball2_speed_x_initial
+                    self.info.sp_ball2_x_pos = self.info.sp_initial_ball2_x_pos
+                    self.info.sp_ball2_y_pos = self.info.sp_initial_ball2_y_pos
+                    self.state.sp_ball2_moving_right = False  
+                    self.state.sp_ball1_moving_right = True
+
+                    self.info.ball1_delay = 0
+                    self.info.ball2_delay = 0
+
                     self.info.change.play()
                     pygame.mouse.set_visible(True)
                 
