@@ -36,7 +36,7 @@ class State:
         self.win_change = False
         self.volume_change = False
 
-        self.bg_music = False
+        self.bg_music = True
         
         self.sp_pad_up = False
         self.sp_pad_down = False
