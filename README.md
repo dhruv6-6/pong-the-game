@@ -1,20 +1,19 @@
 # PONG 
 
-
-
-to run the file you need pygame and python installed
-
-to install python complete the installation of latest python version from here:
+## To run the file
+install latest version of python 
 https://www.python.org/downloads/
 
-to setup python enviroment with vs code refer to this link:
-https://code.visualstudio.com/docs/languages/python
+run this command in the command line 
+```
+pip install -r requirements.txt
+```
 
-to install pygame refer to this page:
-https://www.geeksforgeeks.org/how-to-install-pygame-in-windows/
+run pong.py
 
-to run the game open the pong.py file and run it
+## Work in progress:-
+music folder is not changeable
+level 4,5,6 in single player
 
-music folder is not changeable yet
-
-the 4 , 5 , 6 levels in single player is still in progress
+## About
+This is my first programing project. I added a multiplayer and a singleplayer mode. I also added settings for multiplayer mode.
