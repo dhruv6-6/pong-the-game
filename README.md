@@ -3,7 +3,7 @@
 ## To run the file
 1) install latest version of python from:
 
-https://www.python.org/downloads/
+   https://www.python.org/downloads/
 
 2) run this command in the command line 
 ```
