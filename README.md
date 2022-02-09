@@ -5,7 +5,7 @@
 
    https://www.python.org/downloads/
 
-2) run this command in the command line.
+2) run this command in the command line to install the required libraries:
 ```
  pip install -r pong-the-game/requirements.txt
 ```
