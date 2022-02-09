@@ -121,6 +121,7 @@ class Ball:
                 self.info.sp_ball_y_pos += self.info.sp_ball_speed_y
 
         elif self.state.sp_4_game_start == True:
+
             self.disp.blit(self.info.sp_ball_image , [self.info.sp_ball1_x_pos , self.info.sp_ball1_y_pos])
             self.disp.blit(self.info.sp_ball_image , [self.info.sp_ball2_x_pos , self.info.sp_ball2_y_pos])
             if self.info.ball1_delay == 0:
@@ -135,6 +136,13 @@ class Ball:
 
                     if self.info.sp_ball1_x_pos > self.info.screen_width/2 - self.info.ball_size:
                         self.state.sp_ball1_moving_right = False    
+
+                    for i in range(0 , len(self.info.bricks1_x)):
+                        if self.info.bricks1_x[i] <= self.info.sp_ball1_x_pos + self.info.sp_ball_size <= self.info.bricks1_x[i] + self.info.brick_w and self.info.bricks1_y[i] - 10 <= self.info.sp_ball1_y_pos <= self.info.bricks1_y[i] + self.info.brick_h - self.info.sp_ball_size + 10:
+                            self.info.bricks1_x.pop(i)
+                            self.info.bricks1_y.pop(i)
+                            self.state.sp_ball1_moving_right = False
+                            break
 
                 elif self.state.sp_ball1_moving_right == False:
                     self.info.sp_ball1_x_pos -= self.info.sp_ball1_speed_x/100
@@ -152,6 +160,13 @@ class Ball:
                         self.info.sp_ball1_y_pos = self.info.sp_initial_ball1_y_pos
                         self.info.ball1_delay = 600
                         self.state.sp_ball1_moving_right = True
+
+                    for i in range(0 , len(self.info.bricks1_x)):
+                        if self.info.bricks1_x[i] <= self.info.sp_ball1_x_pos <= self.info.bricks1_x[i] + self.info.brick_w and self.info.bricks1_y[i] - 10 <= self.info.sp_ball1_y_pos <= self.info.bricks1_y[i] + self.info.brick_h - self.info.sp_ball_size + 10:
+                            self.info.bricks1_x.pop(i)
+                            self.info.bricks1_y.pop(i)
+                            self.state.sp_ball1_moving_right = True
+                            break
 
                 if self.state.sp_ball1_moving_up == True:
                     self.info.sp_ball1_y_pos -= self.info.sp_ball1_speed_y
@@ -184,12 +199,26 @@ class Ball:
                         self.info._sp_update2_yspeed()
                         if self.info.sp_max_ball_speed >= self.info.sp_ball2_speed_x:
                             self.info.sp_ball2_speed_x += self.info.sp_ball_speed_inc
+                        
+                    for i in range(0 , len(self.info.bricks2_x)):
+                        if self.info.bricks2_x[i] <= self.info.sp_ball2_x_pos + self.info.sp_ball_size <= self.info.bricks2_x[i] + self.info.brick_w and self.info.bricks2_y[i] - 20 <= self.info.sp_ball2_y_pos <= self.info.bricks2_y[i] + self.info.brick_h - self.info.sp_ball_size + 20:
+                            self.info.bricks2_x.pop(i)
+                            self.info.bricks2_y.pop(i)
+                            self.state.sp_ball2_moving_right = False
+                            break
 
                 elif self.state.sp_ball2_moving_right == False:
                     self.info.sp_ball2_x_pos -= self.info.sp_ball2_speed_x/100
 
                     if self.info.sp_ball2_x_pos < self.info.screen_width/2:
                         self.state.sp_ball2_moving_right = True
+
+                    for i in range(0 , len(self.info.bricks2_x)):
+                        if self.info.bricks2_x[i] <= self.info.sp_ball2_x_pos <= self.info.bricks2_x[i] + self.info.brick_w and self.info.bricks2_y[i] - 20 <= self.info.sp_ball2_y_pos <= self.info.bricks2_y[i] + self.info.brick_h - self.info.sp_ball_size + 20:
+                            self.info.bricks2_x.pop(i)
+                            self.info.bricks2_y.pop(i)
+                            self.state.sp_ball2_moving_right = True
+                            break
 
                 if self.state.sp_ball2_moving_up == True:
                     self.info.sp_ball2_y_pos -= self.info.sp_ball2_speed_y
@@ -198,3 +227,5 @@ class Ball:
 
             else:
                 self.info.ball2_delay -= 1
+
+

@@ -127,6 +127,10 @@ class Input_Events:
                     self.info.sp_ball2_speed_x = self.info.sp_ball2_speed_x_initial
                     self.info.sp_ball2_x_pos = self.info.sp_initial_ball2_x_pos
                     self.info.sp_ball2_y_pos = self.info.sp_initial_ball2_y_pos
+                    self.info.bricks1_x = self.info.bricks1_x_initial.copy()
+                    self.info.bricks1_y = self.info.bricks1_y_initial.copy()
+                    self.info.bricks2_x = self.info.bricks2_x_initial.copy()
+                    self.info.bricks2_y = self.info.bricks2_y_initial.copy()
                     self.state.sp_ball2_moving_right = False  
                     self.state.sp_ball1_moving_right = True
 

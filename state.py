@@ -12,6 +12,8 @@ class State:
         self.mp_game_start = False
         self.mp_game_active = False
         self.mp_win_screen = False
+        self.win_screen = False
+        self.lose_screen = False
 
         self.sp_game_active = False  
         self.sp_select_screen = False
