@@ -1,15 +1,16 @@
 # PONG 
 
 ## To run the file
-install latest version of python 
+1) install latest version of python from:
+
 https://www.python.org/downloads/
 
-run this command in the command line 
+2) run this command in the command line 
 ```
 pip install -r requirements.txt
 ```
 
-run pong.py
+3) run pong.py
 
 ## Work in progress:-
 music folder is not changeable
