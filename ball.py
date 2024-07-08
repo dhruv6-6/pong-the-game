@@ -3,6 +3,7 @@ import pygame
 class Ball:
     def __init__ (self,ai_game):
 
+
         self.disp = ai_game.disp
         self.info = ai_game.info
         self.state = ai_game.state
